@@ -8,47 +8,63 @@ namespace Task1_08
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Ввод Размерности:");
+        private static Random rand = new Random();
 
+        public static int[,,] GenerateArray()
+        {
+            Console.WriteLine("Введите размерность массива: ");
             int x = int.Parse(Console.ReadLine());
             int y = int.Parse(Console.ReadLine());
             int z = int.Parse(Console.ReadLine());
-            int[,,] arr;
-            arr = new int[x, y, z];
-            double[,,] Array = new double[x, y, z];
+            int[,,] arr = new int[x, y, z];
+
+            for (int i = 0; i < x; i++)
             {
-                Console.WriteLine("Ввод Элемента:");
-                for (int i = 0; i < x; i++)
+                for (int j = 0; j < y; j++)
                 {
-                    for (int j = 0; j < y; j++)
+                    for (int b = 0; b < z; b++)
                     {
-                        for (int b = 0; b < z; b++)
-                        {
-                            Console.Write("Array[" + i + "," + j + "," + b + "]: ");
-                            Array[i, j, b] = int.Parse(Console.ReadLine());
-                        }
+                        arr[i, j, b] = rand.Next(-50, 50);
                     }
                 }
-                for (int i = 0; i < x; i++)
-                {
-                    for (int j = 0; j < y; j++)
-                    {
-                        for (int b = 0; b < z; b++)
-                        {
-                            if (Array[i, j, b] > 0)
-                            {
-                                Array[i, j, b] = 0;
-                            }
-                            Console.WriteLine($"Array: {Array[i, j, b]}");
-
-                        }
-
-                    }
-                }
-                Console.ReadKey();
             }
+            return arr;
+        }
+        private static void WriteArray(int[,,] arr)
+        {
+            Console.WriteLine("Элементы массива:");
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int b = 0; b <= arr.GetUpperBound(2); b++)
+                        Console.WriteLine($"Array[{i},{j},{b}]: {arr[i, j, b]}");
+                }
+            }
+        }
+        private static void RemovePositive(int[,,] arr)
+        {
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int b = 0; b <= arr.GetUpperBound(2); b++)
+                    {
+                        if (arr[i, j, b] > 0)
+                        {
+                            arr[i, j, b] = 0;
+                        }
+                    }
+                }
+            }
+        }
+        static void Main(string[] args)
+        {
+            int[,,] arr = GenerateArray();
+            WriteArray(arr);
+            RemovePositive(arr);
+            WriteArray(arr);
+            Console.ReadKey();
         }
     }
 }
