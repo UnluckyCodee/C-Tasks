@@ -12,9 +12,32 @@ namespace Task1_10
 
         public static int[,] GenerateArray()
         {
-            Console.WriteLine("Введите размерность массива: ");
-            int x = int.Parse(Console.ReadLine());
-            int y = int.Parse(Console.ReadLine());
+            int x;
+            int y;
+
+            do
+            {
+                Console.WriteLine("Введите размерность массива по X: ");
+                x = int.Parse(Console.ReadLine());
+                if (x <= 0)
+                {
+                    Console.Write("Некорректный ввод");
+                }
+            }
+            while (x <= 0);
+
+
+            do
+            {
+                Console.Write("Введите размерность массива по Y: ");
+                y = int.Parse(Console.ReadLine());
+                if (y <= 0)
+                {
+                    Console.WriteLine("Некорректный ввод");
+                }
+            }
+            while (y <= 0);
+
             int[,] arr = new int[x, y];
 
             for (int i = 0; i < x; i++)

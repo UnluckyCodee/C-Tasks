@@ -10,7 +10,19 @@ namespace Task1_03
     {
         static void Main(string[] args)
         {
-            int N = int.Parse(Console.ReadLine());
+            int N;
+
+            do
+            {
+                Console.Write("Введите целое неотрицательное N: ");
+                N = int.Parse(Console.ReadLine());
+                if (N <= 0)
+                {
+                    Console.WriteLine("Некорректный ввод");
+                }
+            }
+            while (N <= 0);
+
             for (int n = 1; n <= N; n++)
             {
                 Console.Write(new string(' ', N - n));

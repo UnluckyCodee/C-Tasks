@@ -44,7 +44,7 @@ namespace Task1_06
                             a ^= Actions.underline;
                             break;
                         default:
-                            Console.WriteLine("lol");
+                            Console.WriteLine("Данное действие невозможно");
                             break;
                     }
                 }
