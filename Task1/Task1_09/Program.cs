@@ -12,7 +12,19 @@ namespace Task1_09
 
         public static int[] GenerateArray()
         {
-            int n = int.Parse(Console.ReadLine());
+            int n;
+
+            do
+            {
+                Console.Write("Введите количество элементов: ");
+                n = int.Parse(Console.ReadLine());
+                if (n <= 0)
+                {
+                    Console.WriteLine("Некорректный ввод");
+                }
+            }
+            while (n <= 0);
+
             int[] arr = new int[n];
 
             for (int i = 0; i < arr.Length; i++)
